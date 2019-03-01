@@ -14,7 +14,7 @@ This is a docker container with OpenModelica compiler, which produces Bodylight.
 ```bash
 docker build -t bodylight.js.om.compiler "$(pwd)"
 ```
- This builds the Dockerfile as bodylight.js.om.compiler.
+ This builds the Dockerfile as bodylight.js.om.compiler container.
 
  You might need to run this command with root privileges.
 
@@ -40,7 +40,7 @@ docker stop bodylight.js.om.compiler
 
  The compiler looks for a `package.mo` file inside the `libraries\library\` folder.
 
-2. The `input` directory accepts either a single file `name.mo` where `name` is the name of the model for compilation. Or a folder containing a `package.mo` file, where name of the folder is the name of the model to be compiled.
+2. The `input` directory accepts a single file `name.mo` where `name` is the name of the model for compilation.
 
  Files are processed sequentially in alphabetical order.
 
