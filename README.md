@@ -1,7 +1,5 @@
 # Bodylight.js OpenModelica Compiler
 
-__Work in progress__: most of the functionality is not implemented yet.
-
 This is a docker container with OpenModelica compiler, which produces Bodylight.js compatible FMU files
 
 ## Installation
@@ -31,7 +29,8 @@ This starts the docker container and binds the `input`, `output` and `libraries`
 
 ## Stopping the compiler
 ```bash
-docker stop bodylight.js.om.compiler
+docker stop bodylight.js.om.compiler; \
+docker rm bodylight.js.om.compiler
 ```
 
 ## Usage
