@@ -17,6 +17,7 @@ function includes () {
 }
 
 function compile () {
+  FILE=$1
   mkdir /compile
   filename="${FILE##*/}"
   basename="${filename%.*}"
