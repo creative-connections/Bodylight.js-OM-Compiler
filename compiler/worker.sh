@@ -2,7 +2,7 @@
 
 # This looks up the dependency modelica packages in /libraries and outputs the
 # first part of the resulting .mos script
-function includes() {
+function includes () {
   echo "cd(\"/compile\");"
   echo "loadModel(Modelica);"
   for directory in /libraries/*; do
@@ -16,8 +16,7 @@ function includes() {
   done
 }
 
-inotifywait -m -r -e close_write --format '%w%f' "/input" | while read FILE
-do
+function compile () {
   mkdir /compile
   filename="${FILE##*/}"
   basename="${filename%.*}"
@@ -45,4 +44,15 @@ do
   mv /compile/*.fmu /output |& tee -a $log
 
   rm -r /compile
-done
+}
+
+if [[ $# -eq 0 ]]; then
+  inotifywait -m -r -e close_write --format '%w%f' "/input" | while read FILE
+  do
+    compile $FILE
+  done
+fi
+
+if [[ $# -eq 1 ]]; then
+  compile /input/$1
+fi
